@@ -34,3 +34,6 @@ public class Translator {
 	 */
 	private static HashMap<String, String> messages;
 	/**
+	 * The variable that holds currently selected language
+	 */
+	private static Language language;
