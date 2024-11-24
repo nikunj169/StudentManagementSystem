@@ -75,3 +75,7 @@ private void saveMarkingScheme() {
             JOptionPane.showMessageDialog(this, "Please enter valid numbers.");
         }
     }
+  public MarkingScheme getMarkingScheme() {
+        return markingScheme;
+    }
+}
