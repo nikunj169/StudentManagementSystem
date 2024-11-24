@@ -17,3 +17,6 @@ public class Grade {
  public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
+ public int getCourseId() {
+        return courseId;
+    }
