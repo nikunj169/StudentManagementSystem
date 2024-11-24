@@ -134,4 +134,11 @@ public class Student {
 		return id;
 	}
 
+	/**
+	 * @return The date when student started the course
+	 */
+	public Date getStarted() {
+		return started;
+	}
+
 
