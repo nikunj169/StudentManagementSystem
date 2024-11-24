@@ -28,3 +28,14 @@ public class GradingWindow extends JFrame {
         contentPanel = new JPanel();
         contentPanel.setLayout(new BorderLayout());
         setContentPane(contentPanel);
+        // Check if marking scheme exists
+        markingScheme = DBHandler.getMarkingSchemeByCourseId(courseId);
+        if (markingScheme == null) {
+            // Prompt to set marking scheme
+            setMarkingScheme();
+            if (markingScheme == null) {
+                // User canceled marking scheme setup
+                dispose();
+                return;
+            }
+        }
