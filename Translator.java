@@ -29,3 +29,8 @@ enum Language {
  *
  */
 public class Translator {
+	/**
+	 * HashMap that holds tags as keys and messages as values
+	 */
+	private static HashMap<String, String> messages;
+	/**
