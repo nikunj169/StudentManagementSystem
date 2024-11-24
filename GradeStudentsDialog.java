@@ -70,3 +70,11 @@ JLabel courseLabel = new JLabel("Select Course:");
         }
         loadCourses();
     }
+    private void loadCourses() {
+        courseComboBox.removeAllItems();
+        String selectedFaculty = (String) facultyComboBox.getSelectedItem();
+        if (selectedFaculty != null) {
+            List<String> courses = DBHandler.getCoursesByFaculty(selectedFaculty);
+            if (courses.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No courses available for the selected faculty.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
