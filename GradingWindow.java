@@ -106,3 +106,7 @@ public class GradingWindow extends JFrame {
             return "B+";
         } else if (marks >= markingScheme.getGradeB()) {
             return "B";
+        } else if (marks >= markingScheme.getGradeBMinus()) {
+            return "B-";
+        } else if (marks >= markingScheme.getGradeC()) {
+            return "C";
