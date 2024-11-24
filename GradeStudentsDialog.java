@@ -36,3 +36,14 @@ JLabel courseLabel = new JLabel("Select Course:");
         courseComboBox = new JComboBox<>();
         courseComboBox.setBounds(130, 60, 200, 25);
         contentPanel.add(courseComboBox);
+        nextButton = new JButton("Next");
+        nextButton.setBounds(150, 120, 80, 30);
+        contentPanel.add(nextButton);
+
+        // Load faculties
+        List<String> faculties = Arrays.asList(DBHandler.getFaculties());
+        if (faculties.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No faculties available.", "Error", JOptionPane.ERROR_MESSAGE);
+            dispose();
+            return;
+        }
