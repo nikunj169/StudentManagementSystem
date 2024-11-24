@@ -47,3 +47,13 @@ JLabel courseLabel = new JLabel("Select Course:");
             dispose();
             return;
         }
+        for (String faculty : faculties) {
+            facultyComboBox.addItem(faculty);
+        }
+
+        // Add action listener to facultyComboBox
+        facultyComboBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                loadCourses();
+            }
+        });
