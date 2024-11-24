@@ -13,3 +13,12 @@ public class GradingWindow extends JFrame {
     private MarkingScheme markingScheme;
     private List<Student> students;
     private ManagementView parentView;
+    public GradingWindow(ManagementView parentView, Frame parent, String courseName, int courseId, List<Student> students) {
+        super("Grading - " + courseName);
+        this.parentView = parentView;
+        this.courseName = courseName;
+        this.courseId = courseId;
+        this.students = students;
+        initialize();
+        setLocationRelativeTo(parent);
+    }
