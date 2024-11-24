@@ -87,5 +87,8 @@ public class Translator {
 					values.add(valueElement.getTextContent());
 				}
 			}
+			// Putting keys and values in the messages HashMap
+			for (int i = 0; i < keys.size(); i++)
+				messages.put(keys.get(i), values.get(i));
 
 
