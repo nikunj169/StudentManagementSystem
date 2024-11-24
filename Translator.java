@@ -21,3 +21,11 @@ import org.w3c.dom.NodeList;
 enum Language {
 	ENG, RU, RO
 }
+
+/**
+ * The class that handles internationalization and language changes
+ * 
+ * @author Artiom
+ *
+ */
+public class Translator {
