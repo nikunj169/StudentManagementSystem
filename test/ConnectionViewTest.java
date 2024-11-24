@@ -30,6 +30,15 @@ public class ConnectionViewTest {
 		connectionFrame.button("connectButton").click();
 		connectionFrame.optionPane().requireErrorMessage().requireMessage("Please fill in all the empty fields!");
 	}
+	@Test
+	public void wrongDatabaseUrl() {
+		connectionFrame.textBox("loginField").enterText("root");
+		connectionFrame.textBox("passwordField").enterText("simplepassword123");
+		connectionFrame.textBox("databaseUrlField").enterText("dawgfaea");
+		connectionFrame.button("connectButton").click();
+		connectionFrame.optionPane().requireErrorMessage().requireMessage(
+				"Connection with the database hasn't been established!\nPlease check your credentials!");
+	}
 
 
 
