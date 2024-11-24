@@ -83,3 +83,10 @@ public class GradingWindow extends JFrame {
             if (marksStr == null || marksStr.isEmpty()) {
                 continue; // Skip if no marks entered
             }
+            double marks = Double.parseDouble(marksStr);
+            String grade = calculateGrade(marks);
+            Grade gradeObj = new Grade(studentId, courseId, marks, grade);
+            DBHandler.saveGrade(gradeObj);
+            // Update student's grade
+            DBHandler.updateStudentGrade(studentId, grade);
+        }
