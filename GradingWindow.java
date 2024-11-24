@@ -39,3 +39,13 @@ public class GradingWindow extends JFrame {
                 return;
             }
         }
+       // Create table model
+        String[] columnNames = {"Student ID", "Name", "Surname", "Marks"};
+        Object[][] data = new Object[students.size()][4];
+        for (int i = 0; i < students.size(); i++) {
+            Student s = students.get(i);
+            data[i][0] = s.getId();
+            data[i][1] = s.getName();
+            data[i][2] = s.getSurname();
+            data[i][3] = ""; // Marks input
+        }
