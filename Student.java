@@ -64,5 +64,15 @@ public class Student {
 	static {
 		counter = 1;
 	}
+	/**
+	 * Default constructor
+	 */
+	public Student() {
+		// The unique id of the student is set to value of the counter
+		this.id = counter;
+		// The counter after that is increased by one
+		counter++;
+	}
 
+	
 
