@@ -10,3 +10,9 @@ ublic class MarkingScheme {
     private double gradeC;
     private double gradeD;
     private double gradeF;
+ public MarkingScheme() {}
+
+    // Getters and Setters
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
