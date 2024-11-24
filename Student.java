@@ -52,3 +52,17 @@ public class Student {
 	 * The unique id of the student
 	 */
 	int id;
+	/**
+	 * The counter that is increased by one everytime a new instance is created,
+	 * used for ID system
+	 */
+	static int counter;
+
+	/**
+	 * Counter is set to 1 initially
+	 */
+	static {
+		counter = 1;
+	}
+
+
