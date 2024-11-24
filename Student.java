@@ -22,3 +22,33 @@ public class Student {
 	 * The surname of the student
 	 */
 	private String surname;
+
+	/**
+	 * The age of the student
+	 */
+	private int age;
+
+	/**
+	 * The gender of the student
+	 */
+	private Gender gender;
+
+	/**
+	 * The course that the student attends
+	 */
+	private String course;
+
+	/**
+	 * The date when the student started the course
+	 */
+	private Date started;
+
+	/**
+	 * The date when the student started the course
+	 */
+	private Date graduation;
+
+	/**
+	 * The unique id of the student
+	 */
+	int id;
