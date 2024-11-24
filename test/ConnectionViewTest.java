@@ -12,3 +12,6 @@ import org.junit.Test;
  *
  */
 public class ConnectionViewTest {
+  private FrameFixture connectionFrame;
+	private ConnectionView connectionView;
+
