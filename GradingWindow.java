@@ -97,3 +97,8 @@ public class GradingWindow extends JFrame {
         }
         dispose();
     }
+    private String calculateGrade(double marks) {
+        if (marks >= markingScheme.getGradeA()) {
+            return "A";
+        } else if (marks >= markingScheme.getGradeAMinus()) {
+            return "A-";
