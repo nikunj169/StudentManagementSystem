@@ -11,3 +11,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+/**
+ * The enum that represents the selected language
+ * 
+ * @author Artiom
+ *
+ */
+enum Language {
+	ENG, RU, RO
+}
