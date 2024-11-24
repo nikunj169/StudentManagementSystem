@@ -69,3 +69,11 @@ public class Translator {
 			NodeList keysList = document.getElementsByTagName("key");
 			// Get all elements with tag val
 			NodeList valuesList = document.getElementsByTagName("val");
+
+			for (int i = 0; i < keysList.getLength(); i++) {
+				// Add to the keys array every met key in the .xml document
+				Node keyNode = keysList.item(i);
+				Element keyElement = (Element) keyNode;
+				keys.add(keyElement.getAttribute("value"));
+			}
+
