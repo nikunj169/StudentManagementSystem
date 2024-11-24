@@ -90,3 +90,10 @@ public class GradingWindow extends JFrame {
             // Update student's grade
             DBHandler.updateStudentGrade(studentId, grade);
         }
+        JOptionPane.showMessageDialog(this, "Grades saved successfully.");
+        // Refresh the main table
+        if (parentView != null) {
+            parentView.refreshStudentTable();
+        }
+        dispose();
+    }
