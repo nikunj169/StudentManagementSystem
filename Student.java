@@ -106,3 +106,10 @@ public class Student {
 	public int getAge() {
 		return age;
 	}
+
+	/**
+	 * @param age - The age to set to the student
+	 */
+	public void setAge(final int age) {
+		this.age = age;
+	}
