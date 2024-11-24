@@ -20,4 +20,9 @@ public class ConnectionViewTest {
 		connectionView = new ConnectionView();
 		connectionFrame = new FrameFixture(ConnectionView.connectionFrame);
 	}
+	@After
+	public void tearDown() {
+		connectionFrame.cleanUp();
+	}
+
 
