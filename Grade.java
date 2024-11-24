@@ -11,3 +11,6 @@ public class Grade {
         this.marks = marks;
         this.grade = grade;
     }
+ public int getStudentId() {
+        return studentId;
+    }
