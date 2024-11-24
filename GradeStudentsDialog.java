@@ -22,3 +22,10 @@ public GradeStudentsDialog(ManagementView parentView) {
         contentPanel = new JPanel();
         contentPanel.setLayout(null);
         add(contentPanel);
+ JLabel facultyLabel = new JLabel("Select Faculty:");
+        facultyLabel.setBounds(20, 20, 100, 25);
+        contentPanel.add(facultyLabel);
+
+        facultyComboBox = new JComboBox<>();
+        facultyComboBox.setBounds(130, 20, 200, 25);
+        contentPanel.add(facultyComboBox);
