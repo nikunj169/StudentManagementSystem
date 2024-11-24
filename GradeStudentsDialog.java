@@ -78,3 +78,9 @@ JLabel courseLabel = new JLabel("Select Course:");
             if (courses.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No courses available for the selected faculty.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
+            }
+            for (String course : courses) {
+                courseComboBox.addItem(course);
+            }
+        }
+    }
