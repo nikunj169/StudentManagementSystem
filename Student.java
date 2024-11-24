@@ -12,3 +12,13 @@ enum Gender {
  * @author Artiom
  *
  */
+public class Student {
+	/**
+	 * The name of the student
+	 */
+	private String name;
+
+	/**
+	 * The surname of the student
+	 */
+	private String surname;
