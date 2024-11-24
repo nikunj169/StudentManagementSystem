@@ -81,4 +81,11 @@ public class Translator {
 				Node valueNode = valuesList.item(j);
 				Element valueElement = (Element) valueNode;
 
+				// Add to the values array every value met in the .xml document according to the
+				// selected language
+				if (valueElement.getAttribute("lang").equals(language.toString())) {
+					values.add(valueElement.getTextContent());
+				}
+			}
+
 
