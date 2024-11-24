@@ -42,3 +42,10 @@ public class Translator {
 		messages = new HashMap<String, String>();
 		setLanguage(Language.ENG);
 	}
+
+		/**
+	 * The constructor
+	 */
+	public Translator() {
+
+	}
