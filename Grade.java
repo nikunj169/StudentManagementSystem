@@ -29,3 +29,10 @@ public class Grade {
 public void setMarks(double marks) {
         this.marks = marks;
     }
+   public String getGrade() {
+        return grade;
+    }
+    public void setGrade(String grade) {
+        this.grade = grade;
+    }
+}
