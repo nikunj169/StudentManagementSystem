@@ -99,3 +99,10 @@ public class Student {
 	public void setSurname(final String surname) {
 		this.surname = surname;
 	}
+
+/**
+	 * @return The age of the student
+	 */
+	public int getAge() {
+		return age;
+	}
