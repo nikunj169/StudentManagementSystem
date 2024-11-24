@@ -20,3 +20,5 @@ public int getCourseId() { return courseId; }
     public void setCourseId(int courseId) { this.courseId = courseId; }
 public double getGradeA() { return gradeA; }
     public void setGradeA(double gradeA) { this.gradeA = gradeA; }
+ public double getGradeAMinus() { return gradeAMinus; }
+    public void setGradeAMinus(double gradeAMinus) { this.gradeAMinus = gradeAMinus; }
