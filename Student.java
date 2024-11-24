@@ -148,4 +148,10 @@ public class Student {
 		this.started = started;
 	}
 
+	/**
+	 * @return The gender of the student
+	 */
+	public Gender getGender() {
+		return gender;
+	}
 
