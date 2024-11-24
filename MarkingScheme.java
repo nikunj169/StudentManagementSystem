@@ -30,3 +30,5 @@ public double getGradeA() { return gradeA; }
     public void setGradeBMinus(double gradeBMinus) { this.gradeBMinus = gradeBMinus; }
  public double getGradeC() { return gradeC; }
     public void setGradeC(double gradeC) { this.gradeC = gradeC; }
+ public double getGradeC() { return gradeC; }
+    public void setGradeC(double gradeC) { this.gradeC = gradeC; }
