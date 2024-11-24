@@ -47,3 +47,13 @@ private void initialize() {
 
         saveButton = new JButton("Save");
         add(saveButton);
+  // Empty label to fill the grid
+        add(new JLabel());
+
+        // Action listener
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                saveMarkingScheme();
+            }
+        });
+    }
