@@ -23,3 +23,6 @@ public class Grade {
    public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
+   public double getMarks() {
+        return marks;
+    }
