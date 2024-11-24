@@ -65,3 +65,13 @@ private void saveMarkingScheme() {
             markingScheme.setGradeAMinus(Double.parseDouble(gradeAMinusField.getText()));
             markingScheme.setGradeBPlus(Double.parseDouble(gradeBPlusField.getText()));
             markingScheme.setGradeB(Double.parseDouble(gradeBField.getText()));
+   markingScheme.setGradeBMinus(Double.parseDouble(gradeBMinusField.getText()));
+            markingScheme.setGradeC(Double.parseDouble(gradeCField.getText()));
+            markingScheme.setGradeD(Double.parseDouble(gradeDField.getText()));
+            markingScheme.setGradeF(Double.parseDouble(gradeFField.getText()));
+            DBHandler.saveMarkingScheme(markingScheme);
+            dispose();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Please enter valid numbers.");
+        }
+    }
