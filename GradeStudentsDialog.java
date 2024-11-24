@@ -11,3 +11,8 @@ public class GradeStudentsDialog extends JDialog {
     private JButton nextButton;
     private JPanel contentPanel;
     private ManagementView parentView;
+public GradeStudentsDialog(ManagementView parentView) {
+        super(ManagementView.managementFrame, "Grade Students", true);
+        this.parentView = parentView;
+        initialize();
+    }
