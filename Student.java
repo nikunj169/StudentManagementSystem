@@ -73,6 +73,3 @@ public class Student {
 		// The counter after that is increased by one
 		counter++;
 	}
-
-	
-
