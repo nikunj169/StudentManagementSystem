@@ -94,5 +94,14 @@ public class Translator {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Gets the message in dependance of the key
+	 * 
+	 * @param key - The key for the message in the HashMap
+	 * @return The message that contains that key
+	 */
+	public static String getValue(final String key) {
+		return messages.get(key);
+	}
 
 
