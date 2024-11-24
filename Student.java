@@ -79,3 +79,9 @@ public class Student {
 	public String getName() {
 		return name;
 	}
+	/**
+	 * @param name - The name to set to the student
+	 */
+	public void setName(final String name) {
+		this.name = name;
+	}
