@@ -22,3 +22,9 @@ public class GradingWindow extends JFrame {
         initialize();
         setLocationRelativeTo(parent);
     }
+   private void initialize() {
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        contentPanel = new JPanel();
+        contentPanel.setLayout(new BorderLayout());
+        setContentPane(contentPanel);
