@@ -56,3 +56,6 @@ public class GradingWindow extends JFrame {
         };
         JScrollPane scrollPane = new JScrollPane(studentsTable);
         contentPanel.add(scrollPane, BorderLayout.CENTER);
+        // Save button
+        saveButton = new JButton("Save Grades");
+        contentPanel.add(saveButton, BorderLayout.SOUTH);
