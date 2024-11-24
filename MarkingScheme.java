@@ -16,3 +16,5 @@ ublic class MarkingScheme {
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
+public int getCourseId() { return courseId; }
+    public void setCourseId(int courseId) { this.courseId = courseId; }
