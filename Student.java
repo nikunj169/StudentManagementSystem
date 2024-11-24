@@ -141,4 +141,11 @@ public class Student {
 		return started;
 	}
 
+	/**
+	 * @param started - The date when student started attending the course
+	 */
+	public void setStarted(final Date started) {
+		this.started = started;
+	}
+
 
