@@ -39,6 +39,12 @@ public class ConnectionViewTest {
 		connectionFrame.optionPane().requireErrorMessage().requireMessage(
 				"Connection with the database hasn't been established!\nPlease check your credentials!");
 	}
-
+	@Test
+	public void correctCredentials() {
+		connectionFrame.textBox("loginField").enterText("root");
+		connectionFrame.button("connectButton").click();
+		connectionFrame.optionPane().requireMessage("Connection with the database has been successfully established!");
+	}
+}
 
 
