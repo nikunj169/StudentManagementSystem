@@ -24,5 +24,12 @@ public class ConnectionViewTest {
 	public void tearDown() {
 		connectionFrame.cleanUp();
 	}
+	
+	@Test
+	public void emptyFieldsTest() {
+		connectionFrame.button("connectButton").click();
+		connectionFrame.optionPane().requireErrorMessage().requireMessage("Please fill in all the empty fields!");
+	}
+
 
 
