@@ -54,3 +54,18 @@ public class Translator {
 	 * Gets the messages in the language selected by the user
 	 */
 	public static void getMessagesFromXML() {
+		try {
+			// An array that will store keys
+			Vector<String> keys = new Vector<String>();
+			// An array that will store values
+			Vector<String> values = new Vector<String>();
+
+			// Reading the .xml document
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse(new File("Languages.xml"));
+			document.getDocumentElement().normalize();
+			// Get all elements with tag key
+			NodeList keysList = document.getElementsByTagName("key");
+			// Get all elements with tag val
+			NodeList valuesList = document.getElementsByTagName("val");
