@@ -170,3 +170,11 @@ public class Student {
 		return graduation;
 	}
 
+	/**
+	 * @param graduation - The graduation's date to set to the student
+	 */
+	public void setGraduation(final Date graduation) {
+		this.graduation = graduation;
+	}
+}
+
