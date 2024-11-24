@@ -162,3 +162,11 @@ public class Student {
 		this.gender = gender;
 	}
 
+	
+	/**
+	 * @return the date when student will graduate
+	 */
+	public Date getGraduation() {
+		return graduation;
+	}
+
