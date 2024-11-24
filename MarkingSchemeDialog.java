@@ -27,3 +27,17 @@ private void initialize() {
         add(new JLabel("Grade B-:"));
         gradeBMinusField = new JTextField();
         add(gradeBMinusField);
+ add(new JLabel("Grade C:"));
+        gradeCField = new JTextField();
+        add(gradeCField);
+
+        add(new JLabel("Grade D:"));
+        gradeDField = new JTextField();
+        add(gradeDField);
+ add(new JLabel("Grade C:"));
+        gradeCField = new JTextField();
+        add(gradeCField);
+
+        add(new JLabel("Grade D:"));
+        gradeDField = new JTextField();
+        add(gradeDField);
