@@ -90,5 +90,9 @@ public class Translator {
 			// Putting keys and values in the messages HashMap
 			for (int i = 0; i < keys.size(); i++)
 				messages.put(keys.get(i), values.get(i));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 
