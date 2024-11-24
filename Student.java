@@ -120,3 +120,11 @@ public class Student {
 	public String getCourse() {
 		return course;
 	}
+
+	/**
+	 * @param course - The course to set to the student
+	 */
+	public void setCourse(final String course) {
+		this.course = course;
+	}
+
