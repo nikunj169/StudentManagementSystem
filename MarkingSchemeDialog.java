@@ -41,3 +41,9 @@ private void initialize() {
         add(new JLabel("Grade D:"));
         gradeDField = new JTextField();
         add(gradeDField);
+ add(new JLabel("Grade F:"));
+        gradeFField = new JTextField();
+        add(gradeFField);
+
+        saveButton = new JButton("Save");
+        add(saveButton);
