@@ -127,4 +127,11 @@ public class Student {
 	public void setCourse(final String course) {
 		this.course = course;
 	}
+	/**
+	 * @return The id of the student
+	 */
+	public int getId() {
+		return id;
+	}
+
 
