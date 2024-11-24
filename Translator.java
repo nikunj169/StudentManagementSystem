@@ -49,3 +49,8 @@ public class Translator {
 	public Translator() {
 
 	}
+
+	/**
+	 * Gets the messages in the language selected by the user
+	 */
+	public static void getMessagesFromXML() {
