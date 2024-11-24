@@ -75,3 +75,11 @@ public class GradingWindow extends JFrame {
             dispose();
         }
     }
+    private void saveGrades() {
+        int rowCount = studentsTable.getRowCount();
+        for (int i = 0; i < rowCount; i++) {
+            int studentId = (int) studentsTable.getValueAt(i, 0);
+            String marksStr = studentsTable.getValueAt(i, 3).toString();
+            if (marksStr == null || marksStr.isEmpty()) {
+                continue; // Skip if no marks entered
+            }
