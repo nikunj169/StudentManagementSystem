@@ -49,3 +49,10 @@ public class GradingWindow extends JFrame {
             data[i][2] = s.getSurname();
             data[i][3] = ""; // Marks input
         }
+       studentsTable = new JTable(data, columnNames) {
+            public boolean isCellEditable(int row, int column) {
+                return column == 3; // Only Marks column is editable
+            }
+        };
+        JScrollPane scrollPane = new JScrollPane(studentsTable);
+        contentPanel.add(scrollPane, BorderLayout.CENTER);
