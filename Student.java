@@ -85,3 +85,11 @@ public class Student {
 	public void setName(final String name) {
 		this.name = name;
 	}
+
+	/**
+	 * @return The surname of the student
+	 */
+	public String getSurname() {
+		return surname;
+	}
+
