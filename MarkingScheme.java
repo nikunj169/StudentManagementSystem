@@ -5,3 +5,8 @@ ublic class MarkingScheme {
     private double gradeA;
     private double gradeAMinus;
     private double gradeBPlus;
+  private double gradeB;
+    private double gradeBMinus;
+    private double gradeC;
+    private double gradeD;
+    private double gradeF;
