@@ -77,3 +77,8 @@ public class Translator {
 				keys.add(keyElement.getAttribute("value"));
 			}
 
+			for (int j = 0; j < valuesList.getLength(); j++) {
+				Node valueNode = valuesList.item(j);
+				Element valueElement = (Element) valueNode;
+
+
