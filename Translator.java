@@ -104,4 +104,12 @@ public class Translator {
 		return messages.get(key);
 	}
 
+	/**
+	 * @return the currently selected language
+	 */
+	public static Language getLanguage() {
+		return language;
+	}
+
+
 
