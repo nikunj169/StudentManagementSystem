@@ -109,7 +109,14 @@ public class Translator {
 	 */
 	public static Language getLanguage() {
 		return language;
-	}
+	}	
 
+	/**
+	 * @param language - Language user wishes to select
+	 */
+	public static void setLanguage(Language language) {
+		Translator.language = language;
+	}
+}
 
 
