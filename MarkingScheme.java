@@ -24,3 +24,5 @@ public double getGradeA() { return gradeA; }
     public void setGradeAMinus(double gradeAMinus) { this.gradeAMinus = gradeAMinus; }
  public double getGradeBPlus() { return gradeBPlus; }
     public void setGradeBPlus(double gradeBPlus) { this.gradeBPlus = gradeBPlus; }
+ public double getGradeB() { return gradeB; }
+    public void setGradeB(double gradeB) { this.gradeB = gradeB; }
