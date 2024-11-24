@@ -66,3 +66,12 @@ public class GradingWindow extends JFrame {
             }
         });
     }
+    private void setMarkingScheme() {
+        MarkingSchemeDialog dialog = new MarkingSchemeDialog(this, courseId);
+        dialog.setVisible(true);
+        markingScheme = dialog.getMarkingScheme();
+        if (markingScheme == null) {
+            JOptionPane.showMessageDialog(this, "Marking scheme is required.");
+            dispose();
+        }
+    }
