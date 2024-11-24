@@ -20,3 +20,10 @@ private void initialize() {
         add(new JLabel("Grade B+:"));
         gradeBPlusField = new JTextField();
         add(gradeBPlusField);
+ add(new JLabel("Grade B:"));
+        gradeBField = new JTextField();
+        add(gradeBField);
+
+        add(new JLabel("Grade B-:"));
+        gradeBMinusField = new JTextField();
+        add(gradeBMinusField);
