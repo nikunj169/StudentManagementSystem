@@ -57,3 +57,11 @@ private void initialize() {
             }
         });
     }
+private void saveMarkingScheme() {
+        try {
+            markingScheme = new MarkingScheme();
+            markingScheme.setCourseId(courseId);
+            markingScheme.setGradeA(Double.parseDouble(gradeAField.getText()));
+            markingScheme.setGradeAMinus(Double.parseDouble(gradeAMinusField.getText()));
+            markingScheme.setGradeBPlus(Double.parseDouble(gradeBPlusField.getText()));
+            markingScheme.setGradeB(Double.parseDouble(gradeBField.getText()));
