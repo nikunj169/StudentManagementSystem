@@ -57,3 +57,16 @@ JLabel courseLabel = new JLabel("Select Course:");
                 loadCourses();
             }
         });
+        // Add action listener to nextButton
+        nextButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                proceedToGrading();
+            }
+        });
+
+        // Initialize courses
+        if (facultyComboBox.getItemCount() > 0) {
+            facultyComboBox.setSelectedIndex(0);
+        }
+        loadCourses();
+    }
