@@ -155,3 +155,10 @@ public class Student {
 		return gender;
 	}
 
+	/**
+	 * @param gender - The gender to set to the student
+	 */
+	public void setGender(final Gender gender) {
+		this.gender = gender;
+	}
+
