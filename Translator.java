@@ -37,3 +37,8 @@ public class Translator {
 	 * The variable that holds currently selected language
 	 */
 	private static Language language;
+
+	static {
+		messages = new HashMap<String, String>();
+		setLanguage(Language.ENG);
+	}
