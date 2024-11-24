@@ -93,3 +93,11 @@ JLabel courseLabel = new JLabel("Select Course:");
                 JOptionPane.showMessageDialog(this, "No students enrolled in the selected course.", "Information", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
+            GradingWindow gradingWindow = new GradingWindow(parentView, ManagementView.managementFrame, selectedCourse, courseId, students);
+            gradingWindow.setVisible(true);
+            dispose(); // Close the current dialog
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a course.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
