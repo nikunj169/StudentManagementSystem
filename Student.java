@@ -93,3 +93,9 @@ public class Student {
 		return surname;
 	}
 
+	/**
+	 * @param surname - The surname to set to the student
+	 */
+	public void setSurname(final String surname) {
+		this.surname = surname;
+	}
