@@ -59,3 +59,10 @@ public class GradingWindow extends JFrame {
         // Save button
         saveButton = new JButton("Save Grades");
         contentPanel.add(saveButton, BorderLayout.SOUTH);
+        // Add action listener
+        saveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                saveGrades();
+            }
+        });
+    }
