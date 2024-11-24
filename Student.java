@@ -73,3 +73,9 @@ public class Student {
 		// The counter after that is increased by one
 		counter++;
 	}
+	/**
+	 * @return The name of the student
+	 */
+	public String getName() {
+		return name;
+	}
