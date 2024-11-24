@@ -16,3 +16,9 @@ public GradeStudentsDialog(ManagementView parentView) {
         this.parentView = parentView;
         initialize();
     }
+ private void initialize() {
+        setSize(400, 200);
+        setLocationRelativeTo(ManagementView.managementFrame);
+        contentPanel = new JPanel();
+        contentPanel.setLayout(null);
+        add(contentPanel);
