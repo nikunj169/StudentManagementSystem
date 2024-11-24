@@ -113,3 +113,10 @@ public class Student {
 	public void setAge(final int age) {
 		this.age = age;
 	}
+
+	/**
+	 * @return The course that the student attends
+	 */
+	public String getCourse() {
+		return course;
+	}
