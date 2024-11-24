@@ -84,3 +84,12 @@ JLabel courseLabel = new JLabel("Select Course:");
             }
         }
     }
+    private void proceedToGrading() {
+        String selectedCourse = (String) courseComboBox.getSelectedItem();
+        if (selectedCourse != null) {
+            int courseId = DBHandler.getCourseIdByName(selectedCourse);
+            List<Student> students = DBHandler.getStudentsByCourse(selectedCourse);
+            if (students.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No students enrolled in the selected course.", "Information", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
