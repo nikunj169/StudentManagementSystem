@@ -58,3 +58,42 @@ public class DBHandler {
 	public DBHandler() {
 
 	}
+	/**
+	 * Static initializers
+	 */
+	static {
+		login = "root";
+		databaseUrl = "jdbc:mysql://localhost:3306/studentsdb";
+
+		studentsTable = "students";
+		coursesTable = "courses";
+		facultiesTable = "faculties";
+	}
+
+	/**
+	 * @return The login to connect to the database
+	 */
+	public static String getLogin() {
+		return login;
+	}
+
+	/**
+	 * @param login - The login to set to connect to the database
+	 */
+	public static void setLogin(final String login) {
+		DBHandler.login = login;
+	}
+
+	/**
+	 * @return The password to connect to the database
+	 */
+	public static String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password - The password to set to connect to the database
+	 */
+	public static void setPassword(final String password) {
+		DBHandler.password = password;
+	}
