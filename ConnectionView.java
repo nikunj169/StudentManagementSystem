@@ -151,3 +151,17 @@ public class ConnectionView {
 		connectButton.setBounds(221, 290, 190, 42);
 		connectButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
+		// Execute connection and create a table when "Connect" button pressed
+		connectButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// If one of the fields are empty then warn user about it
+				if (loginField.getText().equals("") || databaseUrlField.getText().equals("")) {
+					JOptionPane.showMessageDialog(new JFrame(), Translator.getValue("fillEmptyFields"),
+							Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+				} else {
+					// Get login, password and database url from fields and set them for database
+					// handler
+					DBHandler.setLogin(loginField.getText());
+					DBHandler.setPassword(passwordField.getText());
+					DBHandler.setDatabaseUrl(databaseUrlField.getText());
+
