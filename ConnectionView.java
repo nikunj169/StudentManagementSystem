@@ -182,5 +182,15 @@ public class ConnectionView {
 
 			}
 		});
+			bottomPanel.setLayout(null);
+		bottomPanel.add(passwordText);
+		bottomPanel.add(loginText);
+		bottomPanel.add(passwordField);
+		bottomPanel.add(loginField);
+		bottomPanel.add(connectButton);
+		bottomPanel.add(databaseUrlText);
+		bottomPanel.add(databaseUrlField);
 
+	}
+}
 
