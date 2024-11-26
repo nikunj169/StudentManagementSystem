@@ -667,3 +667,57 @@ public class DBHandler {
 			return 0;
 		}
 	}
+	/**
+	 * Deletes the students that attend a certain course
+	 * 
+	 * @param course - The course's name which attendees should be deleted
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean deleteCourseAttendees(final String course) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			Statement statement = connection.createStatement();
+
+			statement.executeUpdate("delete from " + getStudentsTable() + " where Course = " + "\"" + course + "\"");
+
+			updateStudents();
+
+			connection.close();
+			statement.close();
+
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	/**
+	 * Deletes a course from the courses table
+	 * 
+	 * @param course - The course's name which should be deleted
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean deleteCourse(final String course) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			Statement statement = connection.createStatement();
+
+			statement.executeUpdate("delete from " + getCoursesTable() + " where Name = " + "\"" + course + "\"");
+
+			updateStudents();
+
+			connection.close();
+			statement.close();
+
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
