@@ -34,3 +34,49 @@ import javax.swing.table.TableRowSorter;
  * @author Artiom
  *
  */
+public class ManagementView {
+
+	/**
+	 * The contents of the management window where you read and write students data
+	 */
+	static JFrame managementFrame;
+
+	/**
+	 * The table containing all students
+	 */
+	static JTable table;
+
+	/**
+	 * The field where user should write the student's name
+	 */
+	static JTextField nameField;
+
+	/**
+	 * The field where user should write the student's surname
+	 */
+	static JTextField surnameField;
+
+	/**
+	 * The field where user should write the student's age
+	 */
+	static JTextField ageField;
+
+	/**
+	 * The field where user should write the date when the student started attending
+	 * the course
+	 */
+	static JTextField startedDateField;
+
+	/**
+	 * The box that user uses in order to select student's gender
+	 */
+	static JComboBox genderSelectionBox;
+
+	/**
+	 * The box that allows user to select a course for a student
+	 */
+	static JComboBox courseSelectionBox;
+
+	/**
+	 * Launch the application.
+	 */
