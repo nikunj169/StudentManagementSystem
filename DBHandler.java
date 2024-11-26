@@ -787,3 +787,32 @@ public class DBHandler {
 			return false;
 		}
 	}
+
+	/**
+	 * Gets the number of courses in a faculty
+	 * 
+	 * @param faculty - The faculty's name whose number of courses should be read
+	 * @return The number of courses in a faculty
+	 */
+	public static int getNumberOfCourses(final String faculty) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"select Courses from " + getFacultiesTable() + " where Name = " + "\"" + faculty + "\"");
+
+			// Get Courses field's value
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			int courses = resultSet.getInt("Courses");
+
+			connection.close();
+			preparedStatement.close();
+
+			return courses;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
