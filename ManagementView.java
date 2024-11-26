@@ -401,4 +401,50 @@ public class ManagementView {
 		// Button that adds a new faculty
 		JButton addFacultyButton = new JButton(Translator.getValue("addFaculty"));
 		addFacultyButton.setName("addFacultyButton");
+		// Actions to perform when "add faculty" button clicked
+		addFacultyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String facultyName = "";
+
+				facultyName = JOptionPane.showInputDialog(managementFrame, Translator.getValue("typeNameFaculty"));
+
+				if (facultyName == null || facultyName.equals("")) {
+					JOptionPane.showMessageDialog(managementFrame, Translator.getValue("emptyNameFaculty"),
+							Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+				} else {
+					if (DBHandler.checkIfElementExists(DBHandler.getFacultiesTable(), facultyName)) {
+						JOptionPane.showMessageDialog(managementFrame, Translator.getValue("facultyAlreadyExists"),
+								Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+					} else {
+						if (DBHandler.addFaculty(facultyName)) {
+							JOptionPane.showMessageDialog(managementFrame,
+									Translator.getValue("facultySuccessfullyAdded"), Translator.getValue("success"),
+									JOptionPane.INFORMATION_MESSAGE);
+						} else {
+							JOptionPane.showMessageDialog(managementFrame, Translator.getValue("facultyNotAdded"),
+									Translator.getValue("success"), JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				}
+			}
+		});
+
+		addFacultyButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		addFacultyButton.setBounds(10, 220, 220, 30);
+		studentPanel.add(addFacultyButton);
+
+		// Button that adds a new course
+		JButton addCourseButton = new JButton(Translator.getValue("addCourse"));
+		addCourseButton.setName("addCourseButton");
+		addCourseButton.addActionListener(new ActionListener() {
+
+			// Actions to perform when "add course" button clicked
+			public void actionPerformed(ActionEvent e) {
+				// If there are no faculties there is no way to add a course
+				if (DBHandler.getFaculties().length == 0) {
+					JOptionPane.showMessageDialog(managementFrame, Translator.getValue("cannotAddCourse"),
+							Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
 
