@@ -208,3 +208,59 @@ public class DBHandler {
 			return false;
 		}
 	}
+
+	/**
+	 * Adds a new student to the table
+	 * 
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean addStudent() {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = connection.prepareStatement("insert into " + studentsTable
+					+ " (Name, Surname, Age, Gender, Course, Started, Graduation) values " + "(?, ?, ?, ?, ?, ?, ?)");
+
+			// Getting the duration of the course in order to calculate Graduation date
+			// field
+			PreparedStatement preparedStatement2 = connection
+					.prepareStatement("select Duration from Courses where Name = " + "\""
+							+ ManagementView.courseSelectionBox.getSelectedItem().toString() + "\"");
+			ResultSet resultSet = preparedStatement2.executeQuery();
+			resultSet.next();
+			final int courseDuration = resultSet.getInt("Duration");
+
+			preparedStatement.setString(1, ManagementView.nameField.getText());
+			preparedStatement.setString(2, ManagementView.surnameField.getText());
+			preparedStatement.setInt(3, Integer.parseInt(ManagementView.ageField.getText()));
+			preparedStatement.setString(4, ManagementView.genderSelectionBox.getSelectedItem().toString());
+			preparedStatement.setString(5, ManagementView.courseSelectionBox.getSelectedItem().toString());
+
+			final String inputDate = ManagementView.startedDateField.getText();
+			LocalDate startedDate = LocalDate.of(Integer.parseInt(inputDate.substring(0, 4)),
+					Integer.parseInt(inputDate.substring(5, 7)), Integer.parseInt(inputDate.substring(8, 10)));
+			preparedStatement.setString(6, startedDate.toString());
+
+			LocalDate graduationDate = startedDate.plusMonths(courseDuration);
+			preparedStatement.setString(7, graduationDate.toString());
+
+			preparedStatement.executeUpdate();
+
+			connection.close();
+			preparedStatement.close();
+
+			updateStudents();
+
+			// Return true if no exception has been thrown
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if an exception has been thrown
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			// Return false if an exception has been thrown
+			return false;
+		}
+	}
