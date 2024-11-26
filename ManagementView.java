@@ -272,3 +272,25 @@ public class ManagementView {
 				DBHandler.updateStudents();
 			}
 		});
+
+		updateButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		buttonsPanel.add(updateButton);
+		buttonsPanel.add(deleteButton);
+
+		// The button to press to exit the application
+		JButton exitButton = new JButton(Translator.getValue("exit"));
+		exitButton.setName("exitButton");
+
+		// Actions to perform when "exit" button clicked
+		exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (JOptionPane.showConfirmDialog(managementFrame, Translator.getValue("confirmDialog"),
+						Translator.getValue("sms"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					managementFrame.dispose();
+					System.exit(0);
+				}
+			}
+		});
+
+		// The button that user have to press in order to disconnect from the current
+		// database
