@@ -15,3 +15,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+/**
+ * The class that holds the front-end connection part of the application and
+ * manages the actions performed out there
+ * 
+ * @author Artiom
+ *
+ */
+public class ConnectionView {
