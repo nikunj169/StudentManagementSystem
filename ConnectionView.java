@@ -114,3 +114,10 @@ public class ConnectionView {
 		databaseUrlField.setText("jdbc:mysql://localhost:3306/studentsdb");
 		databaseUrlField.setColumns(10);
 		databaseUrlField.setBounds(240, 96, 330, 20);
+		// The text that informs user where they have to write database url
+		JLabel databaseUrlText = new JLabel(Translator.getValue("databaseUrlText"));
+		databaseUrlText.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		databaseUrlText.setBounds(68, 91, 162, 25);
+
+		// The button that changes the langauge of the application
+		JButton changeLanguageButton = new JButton(Translator.getValue("changeLanguage"));
