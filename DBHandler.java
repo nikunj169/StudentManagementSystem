@@ -353,4 +353,34 @@ public class DBHandler {
 			return false;
 		}
 	}
+	/**
+	 * Adds a faculty to the faculties table
+	 * 
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean addFaculty(final String facultyName) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"insert into " + facultiesTable + " (Name, Courses, Attendees) values " + "(?, ?, ?)");
+
+			preparedStatement.setString(1, facultyName);
+			preparedStatement.setInt(2, 0);
+			preparedStatement.setInt(3, 0);
+
+			preparedStatement.executeUpdate();
+
+			connection.close();
+			preparedStatement.close();
+
+			// Return true if no exception has been thrown
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if exception has been thrown
+			return false;
+		}
+	}
+
 
