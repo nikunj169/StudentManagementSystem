@@ -294,3 +294,111 @@ public class ManagementView {
 
 		// The button that user have to press in order to disconnect from the current
 		// database
+		JButton disconnectButton = new JButton(Translator.getValue("disconnect"));
+		disconnectButton.setName("disconnectButton");
+
+		// Actions to perform when "disconnect" button has been clicked
+		disconnectButton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				if (JOptionPane.showConfirmDialog(managementFrame, Translator.getValue("confirmDialog"),
+						Translator.getValue("sms"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					// Return back to the connection window
+					ConnectionView.main(null);
+					managementFrame.dispose();
+				}
+			}
+		});
+
+		disconnectButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		buttonsPanel.add(disconnectButton);
+
+		exitButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		buttonsPanel.add(exitButton);
+
+		// The panel where user writes information about a student
+		JPanel studentPanel = new JPanel();
+		studentPanel.setBorder(new LineBorder(SystemColor.textHighlight, 5));
+		studentPanel.setBounds(10, 10, 240, 395);
+		managementFrame.getContentPane().add(studentPanel);
+		studentPanel.setLayout(null);
+
+		// The text that informs the user where they have to write the student's name
+		JLabel nameText = new JLabel(Translator.getValue("name"));
+		nameText.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		nameText.setBounds(10, 22, 67, 19);
+		studentPanel.add(nameText);
+
+		// Initializing name text field
+		nameField = new JTextField();
+		nameField.setName("nameField");
+		nameField.setBounds(85, 23, 143, 22);
+		studentPanel.add(nameField);
+		nameField.setColumns(10);
+
+		// The text that informs the user where they have to write the student's surname
+		JLabel surnameText = new JLabel(Translator.getValue("surname"));
+		surnameText.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		surnameText.setBounds(10, 54, 67, 19);
+		studentPanel.add(surnameText);
+
+		// Initializing surname text field
+		surnameField = new JTextField();
+		surnameField.setName("surnameField");
+		surnameField.setColumns(10);
+		surnameField.setBounds(85, 51, 143, 22);
+		studentPanel.add(surnameField);
+
+		// The text that informs the user where they have to write the student's age
+		JLabel ageText = new JLabel(Translator.getValue("age"));
+		ageText.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		ageText.setBounds(10, 86, 67, 19);
+		studentPanel.add(ageText);
+
+		// Initializing age text field
+		ageField = new JTextField();
+		ageField.setName("ageField");
+		ageField.setColumns(10);
+		ageField.setBounds(85, 83, 143, 22);
+		studentPanel.add(ageField);
+
+		// The text that informs the user where they have to write the student's
+		// attended course
+		JLabel courseText = new JLabel(Translator.getValue("course"));
+		courseText.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		courseText.setBounds(10, 156, 67, 19);
+		studentPanel.add(courseText);
+
+		// The text that informs the user where they have to write the date when student
+		// started attending the course
+		JLabel startedDateText = new JLabel(Translator.getValue("started"));
+		startedDateText.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		startedDateText.setBounds(10, 188, 67, 19);
+		studentPanel.add(startedDateText);
+
+		// Initializing startedDate text field
+		startedDateField = new JTextField();
+		startedDateField.setName("startedDateField");
+		startedDateField.setColumns(10);
+		startedDateField.setBounds(85, 185, 143, 22);
+		startedDateField.setText(Translator.getValue("dateFormat"));
+		studentPanel.add(startedDateField);
+
+		// The text that informs the user where they have to select student's gender
+		JLabel genderText = new JLabel(Translator.getValue("gender"));
+		genderText.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		genderText.setBounds(10, 120, 67, 19);
+		studentPanel.add(genderText);
+
+		// Initializing the box where user selects the student's gender
+		genderSelectionBox = new JComboBox();
+		genderSelectionBox.setName("genderSelectionBox");
+		genderSelectionBox.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		genderSelectionBox.setModel(new DefaultComboBoxModel(sms.Gender.values()));
+		genderSelectionBox.setBounds(85, 120, 143, 22);
+		studentPanel.add(genderSelectionBox);
+
+		// Button that adds a new faculty
+		JButton addFacultyButton = new JButton(Translator.getValue("addFaculty"));
+		addFacultyButton.setName("addFacultyButton");
+
