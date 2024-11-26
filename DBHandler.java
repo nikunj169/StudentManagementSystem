@@ -815,4 +815,60 @@ public class DBHandler {
 			return 0;
 		}
 	}
+	/**
+	 * Updates the contents of the database, taking into account changes from table
+	 * 
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean updateDatabase() {
+		// Getting row and column that user selected
+		int selectedRow = ManagementView.table.getSelectedRow();
+		int selectedColumn = ManagementView.table.getSelectedColumn();
 
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			Statement statement = connection.createStatement();
+
+			// If a cell has been selected
+			if (selectedRow > -1 && selectedColumn > -1) {
+				// Geting the selected field of the selected student and changing it in database
+				if (selectedColumn == 1) {
+					statement.executeUpdate("update " + studentsTable + " set Name = " + "\""
+							+ ManagementView.table.getValueAt(selectedRow, selectedColumn).toString() + "\""
+							+ " where id = "
+							+ Integer.parseInt(ManagementView.table.getValueAt(selectedRow, 0).toString()));
+				} else if (selectedColumn == 2) {
+					statement.executeUpdate("update " + studentsTable + " set Surname = " + "\""
+							+ ManagementView.table.getValueAt(selectedRow, selectedColumn).toString() + "\""
+							+ " where id = "
+							+ Integer.parseInt(ManagementView.table.getValueAt(selectedRow, 0).toString()));
+				} else if (selectedColumn == 3) {
+					statement.executeUpdate("update " + studentsTable + " set Age = "
+							+ Integer.parseInt(ManagementView.table.getValueAt(selectedRow, selectedColumn).toString())
+							+ " where id = "
+							+ Integer.parseInt(ManagementView.table.getValueAt(selectedRow, 0).toString()));
+				} else if (selectedColumn == 4) {
+					statement.executeUpdate("update " + studentsTable + " set Gender = " + "\""
+							+ ManagementView.table.getValueAt(selectedRow, selectedColumn).toString() + "\""
+							+ " where id = "
+							+ Integer.parseInt(ManagementView.table.getValueAt(selectedRow, 0).toString()));
+				}
+			}
+
+			connection.close();
+			statement.close();
+
+			// Return true if no exception has been thrown
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if exception has been thrown
+			return false;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+
+			return false;
+		}
+	}
+}
