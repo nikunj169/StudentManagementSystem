@@ -317,3 +317,40 @@ public class DBHandler {
 			return false;
 		}
 	}
+	/**
+	 * Deletes the selected student from the table
+	 * 
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean deleteStudent() {
+		// Getting row that user selected
+		DefaultTableModel recordTable = (DefaultTableModel) ManagementView.table.getModel();
+		int selectedRow = ManagementView.table.getSelectedRow();
+		ManagementView.table.clearSelection();
+
+		try {
+			// Geting the ID of the student in the selected row
+			final int ID = Integer.parseInt(recordTable.getValueAt(selectedRow, 0).toString());
+
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("delete from " + studentsTable + " where id = ?");
+
+			preparedStatement.setInt(1, ID);
+			preparedStatement.executeUpdate();
+
+			connection.close();
+			preparedStatement.close();
+
+			updateStudents();
+
+			// Return true if no exception has been thrown
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if exception has been thrown
+			return false;
+		}
+	}
+
