@@ -164,3 +164,47 @@ public class DBHandler {
 			return false;
 		}
 	}
+	/**
+	 * Creates a table of students, courses and faculties
+	 * 
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean createTables() {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			Statement statement = connection.createStatement();
+
+			if (!checkIfTableExists(studentsTable)) {
+				// Creating a table of students
+				statement.executeUpdate("create table " + studentsTable + "(ID INTEGER not NULL AUTO_INCREMENT, "
+						+ " Name varchar(50), " + "Surname varchar(50), " + "Age INTEGER, " + "Gender varchar(6), "
+						+ "Course varchar(50), " + "Started varchar(25),  " + "Graduation varchar(25), "
+						+ "PRIMARY KEY ( id ))");
+			}
+
+			if (!checkIfTableExists(coursesTable)) {
+				// Creating a table of courses
+				statement.executeUpdate("create table " + coursesTable + "(ID INTEGER not NULL AUTO_INCREMENT, "
+						+ " Name varchar(50), " + "Faculty varchar(50), " + "Duration INTEGER, " + "Attendees INTEGER, "
+						+ "PRIMARY KEY ( id ))");
+			}
+
+			if (!checkIfTableExists(facultiesTable)) {
+				// Creating a table of faculties
+				statement.executeUpdate("create table " + facultiesTable + "(ID INTEGER not NULL AUTO_INCREMENT, "
+						+ " Name varchar(50), " + "Courses INTEGER, " + "Attendees INTEGER, " + "PRIMARY KEY ( id ))");
+			}
+
+			connection.close();
+			statement.close();
+
+			// Return true if no exception has been thrown
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if an exception has been thrown
+			return false;
+		}
+	}
