@@ -56,3 +56,13 @@ public class ConnectionView {
 			}
 		});
 	}
+	/**
+	 * Create the application.
+	 */
+	public ConnectionView() {
+		initialize();
+		// Make it visible in constructor, in order to make tests in
+		// ConnectionViewTest.java work
+		connectionFrame.setVisible(true);
+	}
+
