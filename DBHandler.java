@@ -384,3 +384,36 @@ public class DBHandler {
 	}
 
 
+	/**
+	 * Adds a course to the courses table
+	 * 
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean addCourse(final String courseName, final String faculty, final int duration) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"insert into " + coursesTable + " (Name, Faculty, Duration, Attendees) values " + "(?, ?, ?, ?)");
+
+			preparedStatement.setString(1, courseName);
+			preparedStatement.setString(2, faculty);
+			preparedStatement.setInt(3, duration);
+			preparedStatement.setInt(4, 0);
+
+			preparedStatement.executeUpdate();
+
+			connection.close();
+			preparedStatement.close();
+
+			updateAttendees();
+
+			// Return true if no exception has been thrown
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if exception has been thrown
+			return false;
+		}
+	}
+
