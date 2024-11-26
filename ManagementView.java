@@ -446,5 +446,59 @@ public class ManagementView {
 							Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
 					return;
 				}
+				String courseName = "", faculty = "";
+				int duration = 0;
+
+				courseName = JOptionPane.showInputDialog(managementFrame, Translator.getValue("typeNameCourse"));
+
+				// If no name has been written for the course
+				if (courseName == null || courseName.equals("")) {
+					JOptionPane.showMessageDialog(managementFrame, Translator.getValue("emptyNameCourse"),
+							Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+					return;
+				} else {
+					String[] faculties = DBHandler.getFaculties();
+					faculty = (String) JOptionPane.showInputDialog(null, Translator.getValue("chooseFaculty"),
+							Translator.getValue("sms"), JOptionPane.QUESTION_MESSAGE, null, faculties, faculties[0]);
+
+					// If no faculty has been selected for the course
+					if (faculty == null || faculty.equals("")) {
+						JOptionPane.showMessageDialog(managementFrame, Translator.getValue("courseNotAddedNoFaculty"),
+								Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+						return;
+					} else {
+						// In case the user types letters for the duration
+						try {
+							duration = Integer.parseInt(JOptionPane.showInputDialog(managementFrame,
+									Translator.getValue("courseTypeDuration")));
+						} catch (NumberFormatException ex) {
+							ex.printStackTrace();
+
+							JOptionPane.showMessageDialog(managementFrame,
+									Translator.getValue("courseNotAddedNoDuration"), Translator.getValue("error"),
+									JOptionPane.ERROR_MESSAGE);
+
+							return;
+						}
+
+						if (DBHandler.checkIfElementExists(DBHandler.getCoursesTable(), courseName)) {
+							JOptionPane.showMessageDialog(managementFrame, Translator.getValue("courseAlreadyExists"),
+									Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+						} else {
+							if (DBHandler.addCourse(courseName, faculty, duration)) {
+								JOptionPane.showMessageDialog(managementFrame,
+										Translator.getValue("courseSuccessfullyAdded"), Translator.getValue("success"),
+										JOptionPane.INFORMATION_MESSAGE);
+
+								updateCourses();
+							} else {
+								JOptionPane.showMessageDialog(managementFrame, Translator.getValue("courseNotAdded"),
+										Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+							}
+						}
+					}
+				}
+			}
+		});
 
 
