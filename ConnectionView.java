@@ -24,3 +24,19 @@ import javax.swing.JTextField;
  *
  */
 public class ConnectionView {
+  
+	/**
+	 * The contents of the connection window where you have to connect to a database
+	 */
+	static JFrame connectionFrame;
+
+	/**
+	 * The text field that stores the login the user has written
+	 */
+	private JTextField loginField;
+	private JPasswordField passwordField;
+	private JTextField databaseUrlField;
+
+	/**
+	 * Launch the application.
+	 */
