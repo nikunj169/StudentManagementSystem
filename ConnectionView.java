@@ -97,4 +97,20 @@ public class ConnectionView {
 		passwordText.setBounds(68, 174, 162, 25);
 		passwordText.setFont(new Font("Tahoma", Font.PLAIN, 12));
 
+		// Initializes the text field where user writes the login
+		loginField = new JTextField();
+		loginField.setName("loginField");
+		loginField.setBounds(240, 139, 330, 20);
+		loginField.setColumns(10);
 
+		// Initializes the text field where user writes the password
+		passwordField = new JPasswordField();
+		passwordField.setName("passwordField");
+		passwordField.setBounds(240, 179, 330, 20);
+
+		// The field where user should write the database url
+		databaseUrlField = new JTextField();
+		databaseUrlField.setName("databaseUrlField");
+		databaseUrlField.setText("jdbc:mysql://localhost:3306/studentsdb");
+		databaseUrlField.setColumns(10);
+		databaseUrlField.setBounds(240, 96, 330, 20);
