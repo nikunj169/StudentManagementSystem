@@ -78,4 +78,9 @@ public class ConnectionView {
 		JPanel topPanel = new JPanel();
 		topPanel.setBackground(SystemColor.textHighlight);
 		connectionFrame.getContentPane().add(topPanel, BorderLayout.NORTH);
+	// The text that informs the user that they have to connect to a database
+		JLabel connectText = new JLabel(Translator.getValue("connectText"));
+		connectText.setForeground(new Color(255, 255, 255));
+		connectText.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		topPanel.add(connectText);
 
