@@ -165,3 +165,46 @@ public class ManagementView {
 		table.getModel().addTableModelListener(new TableModelListener() {
 
 			// Actions to perform when a cell has been edited
+			public void tableChanged(TableModelEvent e) {
+				if (!DBHandler.updateDatabase()) {
+					JOptionPane.showMessageDialog(managementFrame, Translator.getValue("checkInput"),
+							Translator.getValue("sms"), JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+
+		// The panel where all buttons are located
+		JPanel buttonsPanel = new JPanel();
+		buttonsPanel.setBorder(new LineBorder(new Color(0, 120, 215), 5));
+		buttonsPanel.setBackground(UIManager.getColor("Button.background"));
+		buttonsPanel.setBounds(10, 415, 825, 80);
+		managementFrame.getContentPane().add(buttonsPanel);
+
+		// The button to press to delete an information from the table
+		JButton deleteButton = new JButton(Translator.getValue("delete"));
+		deleteButton.setName("deleteButton");
+
+		// Actions to perform when "delete" button clicked
+		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// If no row has been selected
+				if (table.getSelectedRow() == -1) {
+					JOptionPane.showMessageDialog(managementFrame, Translator.getValue("noStudentSelected"),
+							Translator.getValue("sms"), JOptionPane.ERROR_MESSAGE);
+				} else {
+					// Asking the user if they are sure about that
+					if (JOptionPane.showConfirmDialog(managementFrame, Translator.getValue("warningDelete"),
+							Translator.getValue("sms"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+						if (DBHandler.deleteStudent()) {
+							JOptionPane.showMessageDialog(managementFrame,
+									Translator.getValue("studentSuccessfullyDeleted"), Translator.getValue("sms"),
+									JOptionPane.INFORMATION_MESSAGE);
+						} else {
+							JOptionPane.showMessageDialog(managementFrame,
+									Translator.getValue("somethingWrongUnexpected"), Translator.getValue("sms"),
+									JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				}
+			}
+		});
