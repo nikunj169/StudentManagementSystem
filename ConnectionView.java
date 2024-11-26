@@ -165,3 +165,22 @@ public class ConnectionView {
 					DBHandler.setPassword(passwordField.getText());
 					DBHandler.setDatabaseUrl(databaseUrlField.getText());
 
+					// If table has\hasn't been successfully created then inform the user about that
+					if (DBHandler.createTables()) {
+						JOptionPane.showMessageDialog(new JFrame(), Translator.getValue("connectionEstablished"),
+								Translator.getValue("success"), JOptionPane.INFORMATION_MESSAGE);
+
+						// Open a new window where you can manage the table and close the old one
+						ManagementView.main(null);
+						connectionFrame.dispose();
+
+					} else {
+						JOptionPane.showMessageDialog(new JFrame(), Translator.getValue("connectionNotEstablished"),
+								Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+					}
+				}
+
+			}
+		});
+
+
