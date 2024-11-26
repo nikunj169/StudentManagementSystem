@@ -122,3 +122,46 @@ public class ManagementView {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	private void initialize() {
+		managementFrame = new JFrame();
+		managementFrame.setBounds(100, 100, 860, 540);
+		managementFrame.setResizable(false);
+		managementFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		managementFrame.setTitle(Translator.getValue("sms"));
+		managementFrame.getContentPane().setLayout(null);
+
+		// The panel where students table is located
+		JPanel tablePanel = new JPanel();
+		tablePanel.setBorder(new LineBorder(SystemColor.textHighlight, 5));
+		tablePanel.setBounds(260, 10, 575, 395);
+		managementFrame.getContentPane().add(tablePanel);
+		tablePanel.setLayout(null);
+
+		// The scroll pane that allows navigation through table
+		JScrollPane tableScrollPane = new JScrollPane();
+		tableScrollPane.setBounds(10, 10, 555, 375);
+		tablePanel.add(tableScrollPane);
+
+		// Initializing the table and setting its model
+		table = new JTable();
+		tableScrollPane.setViewportView(table);
+		table.setColumnSelectionAllowed(true);
+		table.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { Translator.getValue("ID"), Translator.getValue("name"), Translator.getValue("surname"),
+						Translator.getValue("age"), Translator.getValue("gender"), Translator.getValue("course"),
+						Translator.getValue("started"), Translator.getValue("graduation") }) {
+			boolean[] columnEditables = new boolean[] { false, true, true, true, true, false, false, false };
+
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+
+		// Creating a sorter for the table
+		TableRowSorter tableSorter = new TableRowSorter(table.getModel());
+		table.setRowSorter(tableSorter);
+
+		// Creating a Table Listener to detect cell modifications
+		table.getModel().addTableModelListener(new TableModelListener() {
+
+			// Actions to perform when a cell has been edited
