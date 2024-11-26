@@ -65,4 +65,13 @@ public class ConnectionView {
 		// ConnectionViewTest.java work
 		connectionFrame.setVisible(true);
 	}
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		connectionFrame = new JFrame();
+		connectionFrame.setBounds(100, 100, 640, 480);
+		connectionFrame.setResizable(false);
+		connectionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		connectionFrame.setTitle(Translator.getValue("sms"));
 
