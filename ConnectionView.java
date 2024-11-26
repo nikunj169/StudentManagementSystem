@@ -40,3 +40,19 @@ public class ConnectionView {
 	/**
 	 * Launch the application.
 	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				// Reading messages in dependance of the selected language(by default ENG)
+				Translator.setLanguage(Language.ENG);
+				Translator.getMessagesFromXML();
+
+				try {
+					ConnectionView window = new ConnectionView();
+					window.connectionFrame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
