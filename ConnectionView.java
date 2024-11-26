@@ -83,4 +83,18 @@ public class ConnectionView {
 		connectText.setForeground(new Color(255, 255, 255));
 		connectText.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		topPanel.add(connectText);
+	// The panel in the bottom part of the application
+		JPanel bottomPanel = new JPanel();
+		connectionFrame.getContentPane().add(bottomPanel, BorderLayout.CENTER);
+
+		// The text that informs the user where they have to type the login
+		JLabel loginText = new JLabel(Translator.getValue("loginText"));
+		loginText.setBounds(68, 134, 162, 25);
+		loginText.setFont(new Font("Tahoma", Font.PLAIN, 12));
+
+		// The text that informs the user where they have to type the password
+		JLabel passwordText = new JLabel(Translator.getValue("passwordText"));
+		passwordText.setBounds(68, 174, 162, 25);
+		passwordText.setFont(new Font("Tahoma", Font.PLAIN, 12));
+
 
