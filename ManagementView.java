@@ -587,6 +587,46 @@ public class ManagementView {
 				if (course == null) {
 					return;
 				}
+				// If there are students attending the course
+				if (DBHandler.getNumberOfAttendees(DBHandler.getCoursesTable(), course) > 0) {
+					if (JOptionPane.showConfirmDialog(managementFrame, Translator.getValue("deleteCourseWithStudents"),
+							Translator.getValue("deleteCourse"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+						if (DBHandler.deleteCourseAttendees(course)) {
+							JOptionPane.showMessageDialog(managementFrame,
+									Translator.getValue("studentsAttendingSuccessfullyDeleted"),
+									Translator.getValue("success"), JOptionPane.INFORMATION_MESSAGE);
 
+							if (DBHandler.deleteCourse(course)) {
+								JOptionPane.showMessageDialog(managementFrame, Translator.getValue("courseDeleted"),
+										Translator.getValue("success"), JOptionPane.INFORMATION_MESSAGE);
+							} else {
+								JOptionPane.showMessageDialog(managementFrame,
+										Translator.getValue("somethingWrongTryAgain"), "Error",
+										JOptionPane.ERROR_MESSAGE);
+							}
+						} else {
+							JOptionPane.showMessageDialog(managementFrame,
+									Translator.getValue("somethingWrongTryAgain"), Translator.getValue("error"),
+									JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				} else {
+					if (DBHandler.deleteCourse(course)) {
+						JOptionPane.showMessageDialog(managementFrame, Translator.getValue("courseDeleted"),
+								Translator.getValue("success"), JOptionPane.INFORMATION_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(managementFrame, Translator.getValue("somethingWrongTryAgain"),
+								Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				updateCourses();
+			}
+		});
+
+		deleteCourseButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		deleteCourseButton.setBounds(10, 340, 220, 30);
+		studentPanel.add(deleteCourseButton);
+	}
+}
 
 
