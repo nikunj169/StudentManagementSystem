@@ -721,3 +721,69 @@ public class DBHandler {
 		}
 	}
 
+	/**
+	 * Deletes a faculty from the faculties table
+	 * 
+	 * @param faculty - The faculty name which should be deleted
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean deleteFaculty(final String faculty) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			Statement statement = connection.createStatement();
+
+			statement.executeUpdate("delete from " + getFacultiesTable() + " where Name = " + "\"" + faculty + "\"");
+
+			updateStudents();
+
+			connection.close();
+			statement.close();
+
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	/**
+	 * Deletes all the courses in a certain faculty
+	 * 
+	 * @param faculty - The faculty whose courses should be deleted
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean deleteFacultyCourses(final String faculty) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			Statement statement = connection.createStatement();
+
+			// Getting the courses in that faculty, in order to delete students attending
+			// them
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"select Name from " + getCoursesTable() + " where Faculty = " + "\"" + faculty + "\"");
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				deleteCourseAttendees(resultSet.getString("Name"));
+			}
+
+			// Deleting the course
+			statement.executeUpdate("delete from " + getCoursesTable() + " where Faculty = " + "\"" + faculty + "\"");
+
+			updateStudents();
+
+			connection.close();
+			statement.close();
+			preparedStatement.close();
+			resultSet.close();
+
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
