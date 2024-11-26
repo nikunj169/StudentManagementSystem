@@ -264,3 +264,56 @@ public class DBHandler {
 			return false;
 		}
 	}
+	/**
+	 * Updates the contents of the table
+	 * 
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	public static boolean updateStudents() {
+		int howManyColumns = 0, currentColumn = 0;
+
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from " + studentsTable);
+
+			// Reading data from table
+			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSetMetaData rsmData = resultSet.getMetaData();
+
+			howManyColumns = rsmData.getColumnCount();
+
+			DefaultTableModel recordTable = (DefaultTableModel) ManagementView.table.getModel();
+			recordTable.setRowCount(0);
+
+			while (resultSet.next()) {
+				Vector columnData = new Vector();
+
+				for (currentColumn = 1; currentColumn <= howManyColumns; currentColumn++) {
+					columnData.add(resultSet.getString("ID"));
+					columnData.add(resultSet.getString("Name"));
+					columnData.add(resultSet.getString("Surname"));
+					columnData.add(resultSet.getString("Age"));
+					columnData.add(resultSet.getString("Gender"));
+					columnData.add(resultSet.getString("Course"));
+					columnData.add(resultSet.getString("Started"));
+					columnData.add(resultSet.getString("Graduation"));
+				}
+
+				recordTable.addRow(columnData);
+			}
+
+			updateAttendees();
+
+			connection.close();
+			preparedStatement.close();
+			resultSet.close();
+
+			// Return true if no exception has been thrown
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if exception has been thrown
+			return false;
+		}
+	}
