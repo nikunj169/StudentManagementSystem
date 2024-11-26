@@ -80,3 +80,45 @@ public class ManagementView {
 	/**
 	 * Launch the application.
 	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				// Reading messages in dependance of the selected language(by default ENG)
+				Translator.getMessagesFromXML();
+
+				try {
+					ManagementView window = new ManagementView();
+					window.managementFrame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public ManagementView() {
+		initialize();
+		// Clear the selection in the table, to avoid issues with updateDatabase method
+		// when cells are selected
+		table.clearSelection();
+		// Make it visible in constructor, in order to make tests in
+		// ManagementViewTest.java work
+		managementFrame.setVisible(true);
+		DBHandler.updateStudents();
+	}
+
+	/**
+	 * Updates the list of courses
+	 */
+	private void updateCourses() {
+		// Get the lists of courses
+		DefaultComboBoxModel courses = new DefaultComboBoxModel(DBHandler.getCourses());
+		courseSelectionBox.setModel(courses);
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
