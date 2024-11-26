@@ -97,3 +97,70 @@ public class DBHandler {
 	public static void setPassword(final String password) {
 		DBHandler.password = password;
 	}
+	/**
+	 * @param databaseUrl - the database url to set
+	 */
+	public static void setDatabaseUrl(final String databaseUrl) {
+		DBHandler.databaseUrl = databaseUrl;
+	}
+
+	/**
+	 * @return The database URL
+	 */
+	public static String getDatabaseUrl() {
+		return databaseUrl;
+	}
+
+	/**
+	 * @return The students table's name
+	 */
+	public static String getStudentsTable() {
+		return studentsTable;
+	}
+
+	/**
+	 * @return The faculties table's name
+	 */
+	public static String getFacultiesTable() {
+		return facultiesTable;
+	}
+
+	/**
+	 * @return The courses table's name
+	 */
+	public static String getCoursesTable() {
+		return coursesTable;
+	}
+
+	/**
+	 * Checks if a certain table already exists in the database
+	 * 
+	 * @param tableName - Table's name that is wanted to be checked
+	 * @return True if table exists, false otherwise
+	 */
+	public static boolean checkIfTableExists(final String tableName) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+
+			// Check if a table with tableName name already exists
+			DatabaseMetaData dbmData = connection.getMetaData();
+			ResultSet resultSet = dbmData.getTables(null, null, tableName, null);
+			while (resultSet.next()) {
+				if (resultSet.getString(3).equals(tableName)) {
+					// Return true if the table has been found
+					return true;
+				}
+			}
+
+			connection.close();
+			resultSet.close();
+
+			// Return false if no table has been found
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if an exception has been thrown
+			return false;
+		}
+	}
