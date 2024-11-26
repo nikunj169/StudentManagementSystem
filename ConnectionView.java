@@ -139,4 +139,15 @@ public class ConnectionView {
 				new ConnectionView();
 			}
 		});
+		
+		
+		changeLanguageButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		changeLanguageButton.setBounds(480, 365, 135, 25);
+		bottomPanel.add(changeLanguageButton);
+
+		// The button to press after the login and password were written
+		JButton connectButton = new JButton(Translator.getValue("connectButton"));
+		connectButton.setName("connectButton");
+		connectButton.setBounds(221, 290, 190, 42);
+		connectButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
