@@ -600,4 +600,70 @@ public class DBHandler {
 			return false;
 		}
 	}
+	/**
+	 * Searches if there is already an element with a certain name in a certain table
+	 * 
+	 * @param tableName - The table in which user wants to check if element already
+	 *                  exists
+	 * @param name      - The name of the element user wants to check
+	 * @return true if the element has been found, false otherwise
+	 */
+	public static boolean checkIfElementExists(final String tableName, final String name) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = connection.prepareStatement("select Name from " + tableName);
 
+			// Get all the elements' name
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				if (resultSet.getString("Name").equals(name)) {
+					// Return true if an element has been found
+					return true;
+				}
+			}
+
+			connection.close();
+			preparedStatement.close();
+			resultSet.close();
+
+			// Return false if no element has been found in the table
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if an exception has been thrown
+			return false;
+		}
+	}
+
+	/**
+	 * Gets the number of attendees in a course or faculty
+	 * 
+	 * @param tableName - The table in which user wants to check the number of
+	 *                  attendees(Faculties/Courses table)
+	 * @param element   - The course/faculty name in which user wants to check the
+	 *                  number of attendees
+	 * @return The number of attendees in a faculty/course.
+	 */
+	public static int getNumberOfAttendees(final String tableName, final String element) {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = connection
+					.prepareStatement("select Attendees from " + tableName + " where Name = " + "\"" + element + "\"");
+
+			// Get all the elements' name
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			int attendees = resultSet.getInt("Attendees");
+
+			connection.close();
+			preparedStatement.close();
+			resultSet.close();
+
+			return attendees;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
