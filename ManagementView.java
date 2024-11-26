@@ -208,3 +208,67 @@ public class ManagementView {
 				}
 			}
 		});
+		deleteButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+
+		// The button to press to add a student to the table
+		JButton addButton = new JButton(Translator.getValue("add"));
+		addButton.setName("addButton");
+
+		// Actions to perform when "add" button clicked
+		addButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				table.clearSelection();
+
+				if (DBHandler.getFaculties().length == 0) {
+					JOptionPane.showMessageDialog(managementFrame, Translator.getValue("cannotAddStudent"),
+							Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
+				// If one of the fields are empty warn user about that
+				if (nameField.getText().equals("") || surnameField.getText().equals("") || ageField.getText().equals("")
+						|| startedDateField.getText().equals("")) {
+
+					JOptionPane.showMessageDialog(managementFrame, Translator.getValue("fillEmptyFields"),
+							Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+				} else {
+					try {
+						// Check if the written data is written correctly according to the format
+						SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+						format.setLenient(false);
+						format.parse(startedDateField.getText());
+					} catch (ParseException ex) {
+						ex.printStackTrace();
+
+						JOptionPane.showMessageDialog(managementFrame, Translator.getValue("dateFormatError"),
+								Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+
+						return;
+					}
+
+					if (DBHandler.addStudent()) {
+						JOptionPane.showMessageDialog(managementFrame, Translator.getValue("studentSuccessfullyAdded"),
+								Translator.getValue("success"), JOptionPane.INFORMATION_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(managementFrame, Translator.getValue("somethingWrongInput"),
+								Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+					}
+
+				}
+			}
+		});
+		buttonsPanel.setLayout(new GridLayout(0, 5, 0, 0));
+
+		addButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		buttonsPanel.add(addButton);
+
+		// The button to press to update an information in the table
+		JButton updateButton = new JButton(Translator.getValue("update"));
+
+		// Actions to perform when "update" button clicked
+		updateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				table.clearSelection();
+				DBHandler.updateStudents();
+			}
+		});
