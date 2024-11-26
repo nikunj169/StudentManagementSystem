@@ -121,3 +121,22 @@ public class ConnectionView {
 
 		// The button that changes the langauge of the application
 		JButton changeLanguageButton = new JButton(Translator.getValue("changeLanguage"));
+		// Actions to perform when "Change language" button is clicked
+		changeLanguageButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Language selectedLanguage = (Language) JOptionPane.showInputDialog(null, Translator.getValue("sms"),
+						Translator.getValue("selectLanguage"), JOptionPane.QUESTION_MESSAGE, null, Language.values(),
+						Language.ENG.toString());
+
+				if (selectedLanguage != null)
+					Translator.setLanguage(selectedLanguage);
+				else
+					return;
+
+				Translator.getMessagesFromXML();
+
+				connectionFrame.dispose();
+				new ConnectionView();
+			}
+		});
+
