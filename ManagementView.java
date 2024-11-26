@@ -500,5 +500,33 @@ public class ManagementView {
 				}
 			}
 		});
+		addCourseButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		addCourseButton.setBounds(10, 260, 220, 30);
+		studentPanel.add(addCourseButton);
+
+		// Initializing the course selection box
+		courseSelectionBox = new JComboBox();
+		courseSelectionBox.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		courseSelectionBox.setBounds(85, 154, 143, 22);
+		updateCourses();
+		studentPanel.add(courseSelectionBox);
+
+		// Button that allows to delete a faculty
+		JButton deleteFacultyButton = new JButton(Translator.getValue("deleteFaculty"));
+		deleteFacultyButton.setName("deleteFacultyButton");
+
+		// Actions to perform when "Delete Faculty" button clicked
+		deleteFacultyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				table.clearSelection();
+
+				String faculty = (String) JOptionPane.showInputDialog(null, Translator.getValue("sms"),
+						Translator.getValue("chooseFacultyDelete"), JOptionPane.QUESTION_MESSAGE, null,
+						DBHandler.getFaculties(), DBHandler.getFaculties()[0]);
+
+				// If no faculty has been selected
+				if (faculty == null) {
+					return;
+				}
 
 
