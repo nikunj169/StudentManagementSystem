@@ -484,3 +484,120 @@ public class DBHandler {
 		updateFacultiesAttendees();
 	}
 
+	/**
+	 * Updates the number of attendees in courses table
+	 * 
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	private static boolean updateCoursesAttendees() {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = connection.prepareStatement("select Course from " + studentsTable);
+			Statement statement = connection.createStatement();
+
+			// Setting number of courses and attendees to 0 initially, in order to avoid
+			// wrong calculations
+			statement.executeUpdate("update " + getCoursesTable() + " set Attendees = 0");
+
+			// Reading courses that students attend from the table
+			ResultSet resultSet = preparedStatement.executeQuery();
+			HashMap<String, Integer> coursesAttendees = new HashMap<String, Integer>();
+
+			// Calculating the number of attendees to the courses
+			MAINLOOP: while (resultSet.next()) {
+				String currentCourse = resultSet.getString("Course");
+
+				for (String key : coursesAttendees.keySet()) {
+					// If currentCourse is already in the HashMap, increment the value of attendees
+					if (currentCourse.equals(key)) {
+						coursesAttendees.put(key, coursesAttendees.get(key) + 1);
+						continue MAINLOOP;
+					}
+				}
+
+				coursesAttendees.put(currentCourse, 1);
+			}
+
+			// Update the number of attendees to the courses in the courses table
+			for (String key : coursesAttendees.keySet()) {
+				statement.executeUpdate("update " + coursesTable + " set Attendees = " + coursesAttendees.get(key)
+						+ " where Name = " + "\"" + key + "\"");
+			}
+
+			connection.close();
+			preparedStatement.close();
+			statement.close();
+			resultSet.close();
+
+			// Return true if no exception has been thrown
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if exception has been thrown
+			return false;
+		}
+	}
+
+	/**
+	 * Updates the number of attendees in faculties table
+	 * 
+	 * @return True if no exception has been thrown, false otherwise
+	 */
+	private static boolean updateFacultiesAttendees() {
+		try {
+			Connection connection = DriverManager.getConnection(databaseUrl, login, password);
+			PreparedStatement preparedStatement = null, preparedStatement2 = null;
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = null, resultSet2 = null;
+
+			// Setting number of courses and attendees to 0 initially, in order to avoid
+			// wrong calculations
+			statement.executeUpdate("update " + facultiesTable + " set Attendees = 0, Courses = 0");
+
+			// Getting the faculties of courses and number of attendees
+			preparedStatement = connection.prepareStatement("select Faculty, Attendees from " + coursesTable);
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				final String faculty = resultSet.getString("Faculty");
+				final int courseAttendees = resultSet.getInt("Attendees");
+
+				preparedStatement2 = connection.prepareStatement(
+						"select Attendees, Courses from " + facultiesTable + " where Name = " + "\"" + faculty + "\"");
+				resultSet2 = preparedStatement2.executeQuery();
+
+				resultSet2.next();
+				final int currentNumberOfAttendees = resultSet2.getInt("Attendees");
+				final int currentNumberOfCourses = resultSet2.getInt("Courses");
+
+				statement.executeUpdate("update " + facultiesTable + " set Attendees = "
+						+ (courseAttendees + currentNumberOfAttendees) + " where Name = " + "\"" + faculty + "\"");
+
+				statement.executeUpdate("update " + facultiesTable + " set Courses = " + (currentNumberOfCourses + 1)
+						+ " where Name = " + "\"" + faculty + "\"");
+			}
+
+			connection.close();
+			preparedStatement.close();
+			if (preparedStatement2 != null)
+				preparedStatement2.close();
+			resultSet.close();
+			if (resultSet2 != null)
+				resultSet2.close();
+			statement.close();
+
+			// Return true if no exception has been thrown
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			// Return false if exception has been thrown
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
