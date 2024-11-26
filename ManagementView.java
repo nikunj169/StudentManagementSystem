@@ -528,5 +528,65 @@ public class ManagementView {
 				if (faculty == null) {
 					return;
 				}
+				// If there are students attending the courses in this faculty
+				if (DBHandler.getNumberOfCourses(faculty) > 0) {
+					if (JOptionPane.showConfirmDialog(managementFrame, Translator.getValue("deleteFacultyWithCourses"),
+							Translator.getValue("sms"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+						if (DBHandler.deleteFacultyCourses(faculty)) {
+							JOptionPane.showMessageDialog(managementFrame,
+									Translator.getValue("coursesFromFacultySuccessfullyDeleted"),
+									Translator.getValue("success"), JOptionPane.INFORMATION_MESSAGE);
+
+							if (DBHandler.deleteFaculty(faculty)) {
+								JOptionPane.showMessageDialog(managementFrame, Translator.getValue("facultyDeleted"),
+										Translator.getValue("success"), JOptionPane.INFORMATION_MESSAGE);
+							} else {
+								JOptionPane.showMessageDialog(managementFrame,
+										Translator.getValue("somethingWrongTryAgain"), Translator.getValue("error"),
+										JOptionPane.ERROR_MESSAGE);
+							}
+
+						} else {
+							JOptionPane.showMessageDialog(managementFrame,
+									Translator.getValue("somethingWrongTryAgain"), Translator.getValue("error"),
+									JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				} else {
+					if (DBHandler.deleteFaculty(faculty)) {
+						JOptionPane.showMessageDialog(managementFrame, Translator.getValue("facultyDeleted"),
+								Translator.getValue("success"), JOptionPane.INFORMATION_MESSAGE);
+					} else {
+						JOptionPane.showMessageDialog(managementFrame, Translator.getValue("somethingWrongTryAgain"),
+								Translator.getValue("error"), JOptionPane.ERROR_MESSAGE);
+					}
+				}
+				updateCourses();
+			}
+		});
+
+		deleteFacultyButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		deleteFacultyButton.setBounds(10, 300, 220, 30);
+		studentPanel.add(deleteFacultyButton);
+
+		// Button that allows to delete a course
+		JButton deleteCourseButton = new JButton(Translator.getValue("deleteCourse"));
+		deleteCourseButton.setName("deleteCourseButton");
+
+		// Actions to perform when "Delete Course" button clicked
+		deleteCourseButton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				table.clearSelection();
+
+				String course = (String) JOptionPane.showInputDialog(null, Translator.getValue("sms"),
+						Translator.getValue("chooseCourseDelete"), JOptionPane.QUESTION_MESSAGE, null,
+						DBHandler.getCourses(), DBHandler.getCourses()[0]);
+
+				// If no course has been selected
+				if (course == null) {
+					return;
+				}
+
 
 
