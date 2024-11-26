@@ -74,4 +74,8 @@ public class ConnectionView {
 		connectionFrame.setResizable(false);
 		connectionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		connectionFrame.setTitle(Translator.getValue("sms"));
+	// The blue-colored panel in the top part of the application
+		JPanel topPanel = new JPanel();
+		topPanel.setBackground(SystemColor.textHighlight);
+		connectionFrame.getContentPane().add(topPanel, BorderLayout.NORTH);
 
