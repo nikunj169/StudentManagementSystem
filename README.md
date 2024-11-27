@@ -40,6 +40,11 @@ With StudyVerse, managing academic records, tracking performance, and maintainin
 - **Validation Mechanisms:**: Ensures input accuracy by validating formats for fields like StudentID, Date, and Grade using regex
 - **GUI Framework:**: Built using Java Swing for front-end interactions, featuring dynamic forms and tables to display and edit student data
 
+## How to Install
+- **Clone/Download the repository**
+- **Open the folder on your pc and run command prompt to write  ``` mvn clean package ```
+- **After a successful build, a ``` target ``` folder will be generated. Open it and place the ``` languages.xml ``` file in it.
+- **Run  ``` S-M-S-0.0.1-SNAPSHOT.jar ``` 
 
 ## 🛠️ Tech Stack
 
