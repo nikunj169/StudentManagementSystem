@@ -42,9 +42,18 @@ With StudyVerse, managing academic records, tracking performance, and maintainin
 
 ## How to Install
 - **Clone/Download the repository**
-- **Open the folder on your pc and run command prompt to write  ``` mvn clean package ```**
-- **After a successful build, a ``` target ``` folder will be generated. Open it and place the ``` languages.xml ``` file in it.**
+- **Download MySQL and Maven in your pc. And set them up. Write down the username and password registered with MySQL**
+- **Locate the repository in your local machine**
+- **Open the folder on your pc and run command prompt on this path**
+- **Input ```mvn clean package``` onto the terminal and wait for the build.**
+- **After a successful build, a ``` target ``` folder will be generated. Open it and place the ``` languages.xml ``` , and all the three .exe exutables file in it.**
+
+- **Go to MySQL and enter the password to enter it.**
+- **Write the following command: ```create database studentsdb;```
 - **Run  ``` S-M-S-0.0.1-SNAPSHOT.jar ```**
+- **Enter your MySQL username and password to establish a successful connection.**
+- **Once a successful connection is established, you can add the students, faculties and courses. Then login using faculty to grade or mark attendance for the students and generate reports.**
+- **PLEASE FIND IMAGES ATTACHED IN THE PROJECT DOCS FOR HELP**
 
 ## 🛠️ Tech Stack
 
