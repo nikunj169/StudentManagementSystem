@@ -1,7 +1,13 @@
 
 ![Logo](https://i.ibb.co/tZ2QbBR/DALL-E-2024-11-27-21-56-11-A-minimalist-logo-for-Edu-Core-Hub-a-student-management-system-The-design.webp)
 
-
+- **TEAM DETAILS**:
+- 1) Akshat Tyagi IMT2023551
+  2) Chirayu Choudhary IMT2023004
+  3) Ishaan Sodhi IMT2023090
+  4) Nikunj Mahajan IMT2023068
+  5) Shivek Ranjan IMT2023042
+  6) Swayam Kotecha IMT2023615
 # 📚 EduCore Hub - The ultimate student management system for efficient data handling and performance tracking 📚
 
 
