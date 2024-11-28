@@ -47,6 +47,11 @@ With StudyVerse, managing academic records, tracking performance, and maintainin
 - **GUI Framework:**: Built using Java Swing for front-end interactions, featuring dynamic forms and tables to display and edit student data
 
 ## How to Install
+### Option 1: Directly Download
+- Download the following files attached in the drive link and run the S-M-S-0.0.1-SNAPSHOT.jar file.
+- (https://drive.google.com/drive/folders/1nMiEeCQOFQeBRboBLAmh8gNAsqKZ2-cK?usp=sharing)
+
+### Option 2: Build and Run
 - **Clone/Download the repository**
 - **Download MySQL and Maven in your pc. And set them up. Write down the username and password registered with MySQL**
 - **Locate the repository in your local machine**
